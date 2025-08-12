@@ -1,0 +1,385 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+:root {
+  --bg-color: #111827;
+  --sidebar-bg: linear-gradient(160deg, #1f2937 0%, #111827 100%);
+  --main-bg: #1f2937;
+  --text-light: #f9fafb;
+  --text-muted: #9ca3af;
+  --accent-grad: linear-gradient(90deg, #38bdf8, #a78bfa);
+  --accent-glow: 0 0 15px #38bdf866, 0 0 30px #a78bfa66;
+  --accent-glow-hover: 0 0 25px #38bdf899, 0 0 45px #a78bfa99;
+  --border-color: #374151;
+  --shadow-dark: rgba(0, 0, 0, 0.25);
+  --radius: 16px;
+  --transition-speed: 0.3s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+    will-change: opacity, transform;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    will-change: opacity, transform;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+    will-change: opacity, transform;
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    will-change: opacity, transform;
+  }
+}
+  
+
+
+@keyframes gradientGlow {
+  0%, 100% {
+    filter: hue-rotate(0deg) brightness(1);
+  }
+  50% {
+    filter: hue-rotate(90deg) brightness(1.2);
+  }
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-light);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.resume-layout {
+  display: grid;
+  grid-template-columns: 1fr 2.5fr;
+  max-width: 1200px;
+  margin: 50px auto;
+  background: var(--main-bg);
+  box-shadow: 0 20px 60px var(--shadow-dark);
+  border-radius: var(--radius);
+  overflow: hidden;
+  border: 1px solid var(--border-color);
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+/* --- Sidebar Styles --- */
+.sidebar {
+  background: var(--sidebar-bg);
+  color: var(--text-light);
+  padding: 40px 30px;
+  border-right: 1px solid var(--border-color);
+}
+
+.name-block {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.name-block h1 {
+  margin: 0;
+  font-size: 2.2rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: gradientGlow 4s ease-in-out infinite;
+}
+
+.name-block h3 {
+  margin: 8px 0 0;
+  font-size: 1rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+}
+
+.sidebar section {
+  margin-bottom: 35px;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.sidebar .contact { animation-delay: 0.2s; }
+.sidebar .skills { animation-delay: 0.3s; }
+.sidebar .education { animation-delay: 0.4s; }
+
+.sidebar h2 {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  position: relative;
+}
+
+.sidebar h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 40px;
+  height: 3px;
+  background: var(--accent-grad);
+  border-radius: 2px;
+}
+
+.contact p {
+  margin: 0 0 12px;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.contact a {
+  color: var(--text-light);
+  text-decoration: none;
+  transition: color var(--transition-speed) ease;
+}
+
+.contact a:hover {
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.skills h4 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: var(--text-light);
+  font-weight: 600;
+}
+
+.skills ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.skills li {
+  background-color: #374151;
+  color: var(--text-light);
+  padding: 8px 12px;
+  margin-bottom: 8px;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: all var(--transition-speed) ease;
+}
+
+.skills li:hover {
+  background: var(--accent-grad);
+  color: #fff;
+  transform: translateX(5px) scale(1.02);
+  box-shadow: var(--accent-glow);
+}
+
+.education p {
+  margin: 4px 0;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.education p:first-of-type {
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+/* --- Main Content Styles --- */
+.main {
+  padding: 40px 50px;
+}
+
+.main section {
+  opacity: 0;
+  animation: fadeInUp 0.5s ease-out forwards;
+}
+
+.main .coursework { animation-delay: 0.5s; }
+.main .projects { animation-delay: 0.6s; }
+
+.main h2 {
+  font-size: 1.8rem;
+  color: var(--text-light);
+  border-bottom: 3px solid var(--border-color);
+  padding-bottom: 10px;
+  margin-bottom: 25px;
+}
+
+.coursework .inline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.coursework .inline-list li {
+  background-color: #374151;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all var(--transition-speed) ease;
+}
+
+.coursework .inline-list li:hover {
+  background: var(--accent-grad);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: var(--accent-glow);
+}
+
+.project {
+  margin-bottom: 30px;
+  padding: 25px;
+  border-bottom: 1px solid var(--border-color);
+  border-radius: var(--radius);
+  transition: all var(--transition-speed) ease-in-out;
+}
+
+.project:last-child {
+  border-bottom: none;
+  padding-bottom: 25px;
+}
+
+.project:hover {
+  transform: translateY(-5px) scale(1.01);
+  background-color: rgba(255, 255, 255, 0.03);
+  box-shadow: 0 8px 30px rgba(0,0,0,0.2);
+}
+
+.project h3 {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.project ul {
+  list-style-position: outside;
+  padding-left: 20px;
+  margin-top: 0;
+}
+
+.project li {
+  margin-bottom: 8px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.project .tech {
+  margin-top: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.project .tech strong {
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+/* --- Contact Icon Styles --- */
+.icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 8px;
+}
+
+.icon {
+  width: 28px;
+  height: 28px;
+  padding: 5px;
+  border-radius: 8px;
+  background: linear-gradient(135deg, #38bdf8 0%, #a78bfa 100%);
+  box-shadow: 0 2px 8px #38bdf855, 0 0 0 2px #a78bfa22;
+  fill: #fff;
+  transition: 
+    transform 0.3s cubic-bezier(.22,.68,.17,1),
+    box-shadow 0.3s,
+    background 0.4s,
+    filter 0.3s;
+}
+
+.icon.brand[data-brand="linkedin"] {
+  background: linear-gradient(135deg, #0a66c2 0%, #0077b5 100%);
+}
+.icon.brand[data-brand="github"] {
+  background: linear-gradient(135deg, #333 0%, #6e5494 100%);
+}
+.icon.brand[data-brand="instagram"] {
+  background: radial-gradient(circle at 30% 30%, #f58529 0%, #dd2a7b 40%, #8134af 70%, #515bd4 100%);
+}
+
+.icon:hover, .icon-wrapper:hover .icon {
+  transform: scale(1.15) rotate(-6deg);
+  box-shadow: 0 6px 24px #a78bfa88, 0 0 0 3px #38bdf888;
+  filter: brightness(1.2) drop-shadow(0 0 6px #38bdf8);
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 0 12px;
+  font-size: 0.95rem;
+}
+
+.contact-item a {
+  color: var(--text-light);
+  text-decoration: none;
+  position: relative;
+  transition: color var(--transition-speed) ease;
+  font-weight: 500;
+}
+
+.contact-item a:hover {
+  background: var(--accent-grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- Responsive Design --- */
+@media (max-width: 992px) {
+  .resume-layout {
+    grid-template-columns: 1fr;
+    margin: 20px;
+  }
+  .sidebar {
+    border-right: none;
+    border-bottom: 1px solid var(--border-color);
+  }
+}
+
+@media (max-width: 768px) {
+  .sidebar, .main {
+    padding: 30px 20px;
+  }
+  .name-block h1 {
+    font-size: 1.8rem;
+  }
+  .main h2 {
+    font-size: 1.5rem;
+  }
+}
